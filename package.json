@@ -1,0 +1,57 @@
+{
+   "name": "star-ghost",
+   "version": "0.0.0-alpha.33",
+   "description": "A Baileys wrapper with built-in tools for WhatsApp bot development. Fork of Starcore maintained by GhostDev.js.",
+   "main": "./lib/index.js",
+   "exports": {
+      ".": {
+         "import": "./lib/index.mjs",
+         "require": "./lib/index.js"
+      }
+   },
+   "files": [
+      "lib/**/*"
+   ],
+   "engines": {
+      "node": ">=20.18.1"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ghostdev654/Star-Ghost.git"
+   },
+   "keywords": [
+      "automation",
+      "baileys",
+      "bot",
+      "interactive-messages",
+      "native-flow",
+      "sticker-pack",
+      "whatsapp",
+      "whatsapp-api",
+      "whatsapp-bot",
+      "whatsapp-web"
+   ],
+   "homepage": "https://github.com/ghostdev654/Star-Ghost#readme",
+   "author": "GhostDev.js",
+   "contributors": [
+      "Lia Wynn (original Starcore author)"
+   ],
+   "license": "Apache-2.0",
+   "dependencies": {
+      "lean-qr": "^2.7.3",
+      "magic-bytes.js": "^1.13.1"
+   },
+   "peerDependencies": {
+      "@napi-rs/image": "^1.11.2",
+      "better-sqlite3": "^13.0.0"
+   },
+   "peerDependenciesMeta": {
+      "@napi-rs/image": {
+         "optional": true
+      },
+      "better-sqlite3": {
+         "optional": true
+      }
+   },
+   "sideEffects": false
+}
