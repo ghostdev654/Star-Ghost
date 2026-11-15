@@ -206,6 +206,7 @@ const client = new Client({
    },
    isBotMessageId: (id) =>
       typeof id === 'string' && id.includes('3EB0'),
+   // Encoded as hex inside generated IDs (IDs stay alphanumeric, e.g. 3EB0...)
    messageIdPrefix: 'STAR-GHOST',
    watchPath: './plugins', // Default: null
    updatePresence: true, // Default: true
@@ -1078,6 +1079,8 @@ sock.sendMessage(jid, {
 })
 ```
 
+> The key must reference a message sent by this session (WhatsApp's 20 minute edit window applies). `remoteJid`, `fromMe` and, in groups, `participant` are taken from `m.key`; if the key only contains `id`, `fromMe: true` and the current chat JID are filled in automatically.
+
 ### 🎯 Private Messaging
 
 > [!CAUTION]
@@ -1780,10 +1783,10 @@ import {
 
 ### 🚀 Try the Bot
 
-A fast, and modular WhatsApp bot built with [@ghostdev654/baileys](https://www.npmjs.com/package/@ghostdev654/baileys).
+A fast, and modular WhatsApp bot built with [@itsliaaa/baileys](https://www.npmjs.com/package/@itsliaaa/baileys).
 Perfect for managing groups, moderating chats, and adding fun with quiz games and handy tools.
 
-👉🏻 [@ghostdev654/starseed](https://github.com/ghostdev654/starseed#readme)
+👉🏻 [@itsliaaa/starseed](https://github.com/itsliaaa/starseed#readme)
 
 ### 📣 Credits
 
@@ -1796,6 +1799,8 @@ Special thanks to the original Baileys maintainers and contributors:
 
 <!-- Please do not replace my name with yours. It's disrespectful. -->
 
-**This project is created and maintained by [Lia Wynn](https://github.com/ghostdev654)**
+**This project is created and maintained by [Lia Wynn](https://github.com/itsliaaa)**
+
+**Star-Ghost fork maintained by [GhostDev.js](https://github.com/ghostdev654).**
 
 Please do not remove or alter the original credits, copyright notices, or attributions.

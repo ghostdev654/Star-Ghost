@@ -1,6 +1,6 @@
 {
    "name": "star-ghost",
-   "version": "0.0.0-alpha.33",
+   "version": "0.0.0-alpha.34",
    "description": "A Baileys wrapper with built-in tools for WhatsApp bot development. Fork of Starcore maintained by GhostDev.js.",
    "main": "./lib/index.js",
    "exports": {
