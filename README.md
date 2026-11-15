@@ -1080,6 +1080,17 @@ sock.sendMessage(jid, {
 ```
 
 > The key must reference a message sent by this session (WhatsApp's 20 minute edit window applies). `remoteJid`, `fromMe` and, in groups, `participant` are taken from `m.key`; if the key only contains `id`, `fromMe: true` and the current chat JID are filled in automatically.
+>
+> Edits are sent the same way WhatsApp Web sends them: encrypted as a `secretEncryptedMessage` (`MESSAGE_EDIT`) using the `messageSecret` of the original message. Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`. If the original message is no longer available (for example after a restart and it was not persisted), pass the full message instead of only its key so the secret travels with it:
+>
+> ```javascript
+> sock.sendMessage(jid, {
+>    text: '✨ I mean, nice!',
+>    edit: m
+> })
+> ```
+>
+> When the secret cannot be resolved, the edit falls back to the plain `protocolMessage` format for compatibility.
 
 ### 🎯 Private Messaging
 
