@@ -194,7 +194,7 @@ const client = new Client({
       name: 'session',
       pairingCode: true,
       phoneNumber: '6281111111111',
-      customCode: 'star-ghost',
+      customPairingCode: 'GHOSTDEV',
       maxRestart: 5,
       type: 'json' // 0 = 'json' | 1 = 'sqlite'
    },
@@ -222,6 +222,8 @@ const client = new Client({
       typeof jid === 'string' && jid.endsWith('bot')
 })
 ```
+
+`customPairingCode` is optional and defaults to `GHOSTDEV`. If provided, it must contain exactly 8 letters and/or numbers (no symbols). The legacy `customCode` option is still accepted.
 
 #### 🧳 Environments
 
@@ -1138,7 +1140,7 @@ sock.sendMessage(jid, {
 
 ```javascript
 const phoneNumber = '6281111111111'
-const customPairingCode = 'STAR-GHOST'
+const customPairingCode = 'STARHOST'
 
 await sock.requestPairingCode(phoneNumber, customPairingCode)
 
