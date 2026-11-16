@@ -1,8 +1,7 @@
 # ✨ star-ghost
 > **Star-Ghost** es un fork de **Starcore** (descontinuado), mantenido por **GhostDev.js**.
 
-
-[![Logo](https://files.catbox.moe/tfi9tr.png)](https://www.npmjs.com/package/star-ghost)
+[![Logo](media/star-ghost-logo.png)](https://www.npmjs.com/package/star-ghost)
 
 <p align="center">
    A Baileys wrapper with built-in tools for WhatsApp bot development.
@@ -22,16 +21,15 @@
    <a href="https://nodejs.org">
       <img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/>
    </a>
-   <a href="#">
-      <img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/>
-   </a>
 </p>
 
-> Maintained by **GhostDev.js**. Fork of the discontinued **Star-Ghost** project.
+> **Maintained by** **GhostDev.js**. Fork of the discontinued **Starcore** project.
 
 > ⚠️ **Minimum Baileys Version**: `7.0.0-rc10` or higher.
 
-### 📌 Highlights
+---
+
+## 📌 Highlights
 
 - 🚫 No auto-follow channel (newsletter) behavior.
 - 📡 Enhanced `relayMessage()` with newsletter support and compatibility for sending additional binary payloads.
@@ -42,89 +40,41 @@
 - 🔓 `secretEncryptedMessage` is transparently decrypted into `editedMessage`.
 - 🗳️ `vote` in `pollUpdateMessage` is transparently decrypted to reveal the user's selected poll option(s).
 - 🔁 Automatically retry group messages on participant hash mismatch.
+- ✏️ Edits are sent as `secretEncryptedMessage` (`MESSAGE_EDIT`) using the original message's `messageSecret`, with full WaWeb parity.
+- 🗑️ `decrypt-fail="hide"` applied to `secretEncryptedMessage` type `MESSAGE_EDIT` in relay.
 
-### 📋 Table of Contents
+---
 
-- [📌 Highlights](#-highlights)
-- [📥 Installations](#-installations)
-   - [📄 Via `package.json`](#-via-packagejson)
-   - [⌨️ Via terminal](#%EF%B8%8F-via-terminal)
-   - [🧩 Import (ESM & CJS)](#-import-esm--cjs)
-- [📄 Quick Start](#-quick-start)
-- [⚙️ Advanced Usage](#%EF%B8%8F-advanced-usage)
-   - [🧳 Environments](#-environments)
-   - [🗄️ Managing Store](#%EF%B8%8F-managing-store)
-   - [🗑️ Temporary Folder](#%EF%B8%8F-temporary-folder)
-- [📡 Events Reference](#-events-reference)
-   - [📄 Message Event Metadata](#-message-event-metadata)
-- [👥 Find User ID](#-find-user-id)
-- [📨 Sending Messages](#-sending-messages)
-   - [🔠 Text](#-text)
-   - [📰 Link Preview](#-link-preview)
-   - [😄 Reaction](#-reaction)
-   - [📂 Media](#-media)
-   - [⚪ PTV](#-ptv)
-   - [📃 Sticker](#-sticker)
-   - [📦 Sticker Pack](#-sticker-pack)
-   - [👤 Contact](#-contact)
-   - [🖼️ Album](#%EF%B8%8F-album)
-   - [📊 Poll](#-poll)
-   - [📈 Poll Result](#-poll-result)
-   - [🗄️ Interactive](#%EF%B8%8F-interactive)
-   - [🎠 Carousel](#-carousel)
-   - [🔘 Legacy Button](#-legacy-button)
-   - [📋 Legacy List](#-legacy-list)
-   - [✨ Rich](#-rich)
-   - [🛍️ Order](#%EF%B8%8F-order)
-   - [🗒️ Copy & Forward](#%EF%B8%8F-copy--forward)
-   - [🎞️ Status Mention](#%EF%B8%8F-status-mention)
-   - [👥 Group Status](#-group-status)
-- [♻️ Modify Messages](#%EF%B8%8F-modify-messages)
-   - [🗑️ Delete Messages](#%EF%B8%8F-delete-messages)
-   - [✏️ Edit Messages](#%EF%B8%8F-edit-messages)
-- [⚙️ Baileys Features](#%EF%B8%8F-baileys-features)
-   - [🔑 Request Custom Pairing Code](#-request-custom-pairing-code)
-   - [📣 Newsletter Management](#-newsletter-management)
-   - [👥 Group Management](#-group-management)
-   - [👥 Community Management](#-community-management)
-   - [👤 Profile Management](#-profile-management)
-   - [🛒 Business Management](#-business-management)
-   - [🔐 Privacy Management](#-privacy-management)
-   - [📡 Baileys Events Reference](#-baileys-events-reference)
-- [🗳️ Database](#%EF%B8%8F-database)
-   - [📎 JSON](#-json)
-   - [📎 SQLite](#-sqlite)
-- [🧩 Extend](#-extend)
-- [🌐 Request](#-request)
-- [🔧 Global Config](#-global-config)
-- [📚 Exported Modules](#-exported-modules)
-- [🚀 Try the Bot](#-try-the-bot)
-- [📣 Credits](#-credits)
-
-### 📥 Installations
+## 📥 Installations
 
 > [!IMPORTANT]
 > [`star-ghost`](https://www.npmjs.com/package/star-ghost) does **NOT** install Baileys automatically.
->
+
 > You must install a compatible version of Baileys manually before using this package.
 
-#### 📄 Via `package.json`
+### 📄 Via `package.json`
 
 ```json
-# NPM
-"dependencies": {
-   "star-ghost": "latest",
-   "baileys": "^7.0.0-rc14"
-}
-
-# GitHub
-"dependencies": {
-   "star-ghost": "github:ghostdev654/Star-Ghost",
-   "baileys": "^7.0.0-rc14"
+{
+   "dependencies": {
+      "star-ghost": "latest",
+      "baileys": "^7.0.0-rc14"
+   }
 }
 ```
 
-#### ⌨️ Via terminal
+> **GitHub**
+
+```json
+{
+   "dependencies": {
+      "star-ghost": "github:ghostdev654/Star-Ghost",
+      "baileys": "^7.0.0-rc14"
+   }
+}
+```
+
+### ⌨️ Via terminal
 
 ```bash
 # NPM
@@ -134,17 +84,19 @@ npm i star-ghost@latest baileys@7.0.0-rc14
 npm i star-ghost@github:ghostdev654/Star-Ghost baileys@7.0.0-rc14
 ```
 
-#### 🧩 Import (ESM & CJS)
+### 🧩 Import (ESM & CJS)
 
 ```javascript
 // --- ESM
-import { Client, Extend } from 'star-ghost'
+import { Client, Extend, Request, Database } from 'star-ghost'
 
 // --- CJS
-const { Client, Extend } = require('star-ghost')
+const { Client, Extend, Request, Database } = require('star-ghost')
 ```
 
-### 📄 Quick Start
+---
+
+## 📄 Quick Start
 
 ```javascript
 import Client from 'star-ghost'
@@ -174,6 +126,14 @@ client.on('message', (ctx) => {
       ctx.m.reply('👋 Hello there!')
    }
 })
+
+client.on('ready', () => {
+   console.log('✅ Bot is ready!')
+})
+
+client.on('error', (err) => {
+   console.error('❌ Error:', err)
+})
 ```
 
 > [!IMPORTANT]
@@ -184,7 +144,9 @@ const client = new Client({ ... })
 const sock = client.sock
 ```
 
-### ⚙️ Advanced Usage
+---
+
+## ⚙️ Advanced Usage
 
 ```javascript
 import Client from 'star-ghost'
@@ -194,20 +156,24 @@ const client = new Client({
       name: 'session',
       pairingCode: true,
       phoneNumber: '6281111111111',
-      customPairingCode: 'GHOSTDEV',
+      customPairingCode: 'GHOSTDEV', // Optional: 8-digit alphanumeric code (default: GHOSTDEV)
       maxRestart: 5,
       type: 'json' // 0 = 'json' | 1 = 'sqlite'
    },
+
    linkPreview: {
       enabled: true,
       fetchTimeoutMs: 100,
       thumbnailWidth: 192,
       uploadHqThumbnail: true
    },
+
    isBotMessageId: (id) =>
       typeof id === 'string' && id.includes('3EB0'),
+
    // Encoded as hex inside generated IDs (IDs stay alphanumeric, e.g. 3EB0...)
    messageIdPrefix: 'STAR-GHOST',
+
    watchPath: './plugins', // Default: null
    updatePresence: true, // Default: true
    updateProtoOnStartup: true, // Default: true
@@ -223,9 +189,37 @@ const client = new Client({
 })
 ```
 
-`customPairingCode` is optional and defaults to `GHOSTDEV`. If provided, it must contain exactly 8 letters and/or numbers (no symbols). The legacy `customCode` option is still accepted.
+`customPairingCode` is optional and defaults to `GHOSTDEV`. If provided, it must contain exactly 8 letters and/or numbers (no symbols, regex: `^[A-Za-z0-9]{8}$`). The legacy `customCode` option is still accepted.
 
-#### 🧳 Environments
+---
+
+## 📋 Table of Contents
+
+- [📌 Highlights](#-highlights)
+- [📥 Installations](#-installations)
+- [📄 Quick Start](#-quick-start)
+- [⚙️ Advanced Usage](#-advanced-usage)
+- [🧳 Environments](#-environments)
+- [🗄️ Managing Store](#-managing-store)
+- [🗑️ Temporary Folder](#-temporary-folder)
+- [📡 Events Reference](#-events-reference)
+- [📄 Message Event Metadata](#-message-event-metadata)
+- [👥 Find User ID](#-find-user-id)
+- [📨 Sending Messages](#-sending-messages)
+- [♻️ Modify Messages](#-modify-messages)
+- [🎯 Private Messaging](#-private-messaging)
+- [⚙️ Baileys Features](#-baileys-features)
+- [🗳️ Database](#-database)
+- [🧩 Extend](#-extend)
+- [🌐 Request](#-request)
+- [🔧 Global Config](#-global-config)
+- [📚 Exported Modules](#-exported-modules)
+- [🚀 Try the Bot](#-try-the-bot)
+- [📣 Credits](#-credits)
+
+---
+
+## 🧳 Environments
 
 The following environment variables are used by default. Override them with [`dotenv`](https://www.npmjs.com/package/dotenv) when needed.
 
@@ -241,7 +235,20 @@ TEMPORARY_PATH=temp
 TZ=Asia/Jakarta
 ```
 
-#### 🗄️ Managing Store
+### Available environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FFMPEG_PATH` | `ffmpeg` | Path to ffmpeg binary |
+| `FFMPEG_CONCURRENCY` | `4` | Number of concurrent ffmpeg processes |
+| `FFMPEG_TIMEOUT` | `90000` | FFmpeg execution timeout in ms |
+| `REQUEST_TIMEOUT` | `60000` | Default request timeout in ms |
+| `TEMPORARY_PATH` | `temp` | Temporary directory path |
+| `TZ` | `Asia/Jakarta` | Time zone |
+
+---
+
+## 🗄️ Managing Store
 
 Manually load and save store data.
 
@@ -256,11 +263,19 @@ client.on('ready', ({ store }) => {
       catch (error) {
          console.error('❌ An unexpected error occurred when saving store', ':', error)
       }
-   }, 600_000)
+   }, 600_000) // Save every 10 minutes
 })
 ```
 
-#### 🗑️ Temporary Folder
+### Store lifecycle
+
+- `store.readFromFile()` - Load store from file on ready
+- `store.writeToFile()` - Save store to file (automatically every 10 min)
+- Store data is persisted in `./.cache/` by default
+
+---
+
+## 🗑️ Temporary Folder
 
 Since `0.0.0-alpha.3`, temporary files are no longer cleaned up automatically. Implement your own cleanup routine if required.
 
@@ -270,11 +285,11 @@ import { join } from 'path'
 
 setInterval(async () => {
    try {
-      const temporaryFiles = await readdir(process.env.TEMPORARY_PATH)
+      const temporaryFiles = await readdir(process.env.TEMPORARY_PATH || 'temp')
 
       if (temporaryFiles.length) {
          for (const fileName of temporaryFiles) {
-            const filePath = join(process.env.TEMPORARY_PATH, fileName)
+            const filePath = join(process.env.TEMPORARY_PATH || 'temp', fileName)
             await unlink(filePath)
          }
       }
@@ -284,60 +299,130 @@ setInterval(async () => {
    catch (error) {
       console.error('❌ Failed to clean temp folder', ':', error)
    }
-}, 300_000)
+}, 300_000) // Clean every 5 minutes
 ```
 
-### 📡 Events Reference
+---
+
+## 📡 Events Reference
+
+Listen to Baileys events through the socket events emitter. Each event provides specific metadata about what happened.
+
+### Basic event listening
 
 ```javascript
-client.on('prepare', console.log)
-client.on('connect', console.log)
-client.on('ready', console.log)
-client.on('message', console.log)
-client.on('message.edit', console.log)
-client.on('message.delete', console.log)
-client.on('message.stub', console.log)
-client.on('poll', console.log)
-client.on('status', console.log)
-client.on('group.add', console.log)
-client.on('group.promote', console.log)
-client.on('group.demote', console.log)
-client.on('group.remove', console.log)
-client.on('group.request', console.log)
-client.on('group.update', console.log)
-client.on('label.update', console.log)
-client.on('caller', console.log)
-client.on('presence', console.log)
+client.ev.on('message', (ctx) => {
+   console.log('📩 New message received')
+   console.log('From:', ctx.sender)
+   console.log('Body:', ctx.body)
+})
+
+client.ev.on('connect', (ctx) => {
+   console.log('🔗 Connection state:', ctx.type)
+   if (ctx.type === 'pairing') {
+      console.log('📱 Pairing code:', ctx.prettyCode ?? ctx.asciiQr)
+   }
+})
+
+client.ev.on('ready', () => {
+   console.log('✅ Bot is ready!')
+})
+
+client.ev.on('error', (err) => {
+   console.error('❌ Error event:', err)
+})
 ```
 
-#### 📄 Message Event Metadata
+### Available events and their payloads:
 
-The following example shows the payload received from the `message` event.
+| Event | Returns |
+|-------|---------|
+| `connect` | `{ type: 'pairing' \| 'close' \| 'open', prettyCode?: string, asciiQr?: string, reason?: string }` |
+| `ready` | `undefined` (bot is fully initialized) |
+| `message` | See [Message Event Metadata](#-message-event-metadata) below |
+| `message.edit` | `{ key: MessageKey, editedMessage: proto.Message, fromMe: boolean }` |
+| `message.delete` | `{ key: MessageKey, fromMe: boolean }` |
+| `message.stub` | `{ chat: string, from: string, messageKey: MessageKey, stubParameters: any, action: string }` |
+| `message-receipt.update` | `{ key: MessageKey, participant: string, status: 'read' \| 'played' }` |
+| `poll` | Poll message data with options and votes |
+| `status` | Presence status update |
+| `group.add` | Group JID that was added |
+| `group.promote` | User promoted to admin |
+| `group.demote` | User demoted from admin |
+| `group.remove` | User removed from group |
+| `group.request` | Group join request data |
+| `group.update` | Group subject/description/photo updated |
+| `label.update` | Label updated on message/chat |
+| `call` | Call event data |
+| `presence` | Presence update |
+| `contacts.upsert` | Contact added/updated |
+| `contacts.update` | Contact modified |
+| `messages.delete` | Messages deleted |
+| `messages.update` | Messages updated |
+| `messages.media-update` | Media message updated |
+| `messages.upsert` | Message inserted/updated in store |
+| `messages.reaction` | Reaction added to message |
+| `blocklist.set` | Blocklist set |
+| `blocklist.update` | Blocklist updated |
+| `labels.edit` | Label edited |
+| `labels.association` | Label association changed |
+| `newsletter.reaction` | Newsletter message reacted to |
+| `newsletter.view` | Newsletter viewed |
+| `newsletter-participants.update` | Newsletter participants changed |
+| `newsletter-settings.update` | Newsletter settings changed |
+| `settings.update` | Global settings updated |
+| `chats.upsert` | Chat added to store |
+| `chats.update` | Chat updated in store |
+| `chats.delete` | Chat deleted from store |
+| `chats.lock` | Chat locked |
+| `lid-mapping.update` | LID mapping updated |
+| `messaging-history.set` | Messaging history set |
+| `messaging-history.status` | Messaging history status |
+| `presence.update` | Presence updated |
 
-This event is the primary source of incoming messages and includes commonly used information such as chat ID, sender, message type, quoted message, mentions, and helper methods.
+---
+
+## 📄 Message Event Metadata
+
+The `message` event is the primary source of incoming messages. It includes commonly used information such as chat ID, sender, message type, quoted message, mentions, and helper methods.
+
+### Full message event payload:
 
 ```javascript
 {
   m: {
+    // Message key information
     key: {
-      remoteJid: '120111111111111111@g.us',
-      remoteJidAlt: undefined,
-      remoteJidUsername: undefined,
-      fromMe: false,
-      id: 'AC1908CA012689BB9F468E6B4478EBAB',
-      participant: '1211111111111@lid',
-      participantAlt: '6281111111111@s.whatsapp.net',
-      participantUsername: undefined,
-      addressingMode: 'lid'
+      remoteJid: '120111111111111111@g.us',     // Full JID of the chat
+      remoteJidAlt: undefined,                   // Alternative JID
+      remoteJidUsername: undefined,              // Username part
+      fromMe: false,                             // Whether message is from this session
+      id: 'AC1908CA012689BB9F468E6B4478EBAB',  // Message ID
+      participant: '1211111111111@lid',          // Group participant JID (if group)
+      participantAlt: '6281111111111@s.whatsapp.net', // Participant alternative
+      participantUsername: undefined,            // Participant username
+      addressingMode: 'lid'                      // Addressing mode used
     },
+
+    // Message category (if applicable)
     category: undefined,
+
+    // Timestamp
     messageTimestamp: 1782264500,
+
+    // Contact name
     pushName: '‏liaaa',
+
+    // Whether this is a broadcast
     broadcast: false,
+
+    // The actual message proto object
     message: Message {
       extendedTextMessage: [ExtendedTextMessage],
       messageContextInfo: [MessageContextInfo]
     },
+
+    // Convenience properties
     id: 'AC1908CA012689BB9F468E6B4478EBAB',
     chat: '120111111111111111@g.us',
     sender: '6281111111111@s.whatsapp.net',
@@ -349,6 +434,8 @@ This event is the primary source of incoming messages and includes commonly used
     isPrivate: false,
     isBroadcast: false,
     isNewsletter: false,
+
+    // Message type and content
     type: 'extendedTextMessage',
     msg: ExtendedTextMessage {
       endCardTiles: [],
@@ -357,146 +444,140 @@ This event is the primary source of incoming messages and includes commonly used
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
-    quoted: {
-      text: 'star-ghost',
-      contextInfo: [ContextInfo],
-      id: 'AC15B9E93FABF8C9EA230B9093D57OCR',
-      chat: '120111111111111111@g.us',
-      sender: '6281111111111@s.whatsapp.net',
-      senderLid: '1211111111111@lid',
-      device: 'android',
-      fromMe: false,
-      isBot: false,
-      isGroup: true,
-      isPrivate: false,
-      isBroadcast: false,
-      isNewsletter: false,
-      type: 'conversation',
-      text: 'star-ghost',
-      pushName: '‏liaaa',
-      fakeObj: [Object],
-      mentionedJid: [],
-      expiration: 86400,
-      reply: [Function (anonymous)],
-      react: [Function (anonymous)]
-    },
+
+    // Text representation
     text: 'star-ghost',
+
+    // Mentions
     mentionedJid: [],
+
+    // Expiration (if applicable)
     expiration: 86400,
+
+    // Reply helper
     reply: [Function (anonymous)],
+
+    // React helper
     react: [Function (anonymous)]
   },
-  body: 'star-ghost',
-  prefixes: [ '.', '#', '/', '!' ],
-  prefix: '',
-  command: 'star-ghost',
-  args: [],
-  text: ''
+
+  // Command prefix info
+  prefixes: ['.', '#', '/', '!'],
+  prefix: '',         // Current active prefix
+  command: 'star-ghost', // Detected command (if any)
+  args: [],          // Arguments after command
+  text: ''           // Full message text
 }
 ```
 
-### 👥 Find User ID
+### Helper methods available on the message context:
 
-Quickly resolve a user's `JID` and retrieve both `PN` and `LID` in a synchronous function.
+- `ctx.reply(text)` - Reply to the message
+- `ctx.m.reply(text)` - Same as above
+- `ctx.react(emoji)` - Add reaction to message
+- `ctx.mentionedJid` - Array of mentioned JIDs
+- `ctx.quoted` - Quoted message (if any)
+- `ctx.forwarded` - Forwarded message (if any)
+
+---
+
+## 👥 Find User ID
+
+Quickly resolve a user's `JID` and retrieve both `PN` (phone number) and `LID` (local ID) in a synchronous function.
 
 ```javascript
-// Accepts either @s.whatsapp.net or @lid
+// Accepts either @s.whatsapp.net or @lid format
 const jidLid = '6281111111111@s.whatsapp.net'
 
 const result = sock.findUserId(jidLid)
 
-// --- Success
+// --- Success case
 // {
 //    phoneNumber: '6281111111111@s.whatsapp.net',
 //    lid: '1211111111111@lid'
 // }
 
-// --- Not found
+// --- Not found case
 // {
 //    phoneNumber: '6281111111111@s.whatsapp.net',
-//    lid: undefined // or null
+//    lid: undefined // or null depending on availability
 // }
 ```
 
-### 📨 Sending Messages
+---
 
-#### 🔠 Text
+## 📨 Sending Messages
+
+Star-Ghost provides a comprehensive set of message sending functions. Most functions accept a message object `m` (the key of a previously sent message) for reply/quote functionality.
+
+### 🔠 Text
 
 ```javascript
 sock.sendText(jid, '👋🏻 Hello', m, {
-   mentionAll: false, // Optional
-   mentions: ['1211111111111@lid', '6281111111111@s.whatsapp.net'], // Optional
+   mentionAll: false, // Optional: mention all members in group
+   mentions: ['1211111111111@lid', '6281111111111@s.whatsapp.net'] // Optional: specific mentions
 })
 ```
 
-#### 📰 Link Preview
+### 📰 Link Preview
 
 ```javascript
 sock.sendAdText(jid, '👆🏻 Check it out!', m, {
    thumbnailUrl: 'https://www.npmjs.com/package/star-ghost#readme',
    title: '🌱 star-ghost',
    description: 'Underrated Baileys Wrapper',
-   previewType: 0, // Or use 1 for video playback in the link preview
-   thumbnail: fs.readFileSync('./path/to/image.jpg') // Buffer or url
-})
-
-// --- Send a text message with a large link preview and favicon
-sock.sendAdText(jid, '👆🏻 Check it out!', m, {
-   thumbnailUrl: 'https://www.npmjs.com/package/star-ghost#readme',
-   title: '✨ star-ghost',
-   description: 'Underrated Baileys Wrapper',
-   previewType: 0,
-   thumbnail: fs.readFileSync('./path/to/image.jpg'),
-   favicon: fs.readFileSync('./path/to/tiny-image.png'), // Optional, Buffer or url
-   largeThumbnail: true, // Must true if want to send large preview
+   previewType: 0, // 0 = image, 1 = video playback
+   thumbnail: fs.readFileSync('./path/to/image.jpg'), // Buffer or URL
+   favicon: fs.readFileSync('./path/to/tiny-image.png'), // Optional
+   largeThumbnail: true, // Must be true for large preview
    width: 720,
    height: 480
 })
 ```
 
-#### 😄 Reaction
+### 😄 Reaction
 
 ```javascript
 sock.sendReact(jid, '✨', m.key)
 ```
 
-#### 📂 Media
+### 📂 Media
 
 ```javascript
 sock.sendMedia(jid, bufferOrUrl, '📦 Media!', m, {
-   mime: 'image/jpeg', // Optional, will automatically detect the mime
-   document: false, // Optional, force send as document
-   ptv: false, // Optional, force send as PTV
-   gif: false, // Optional
-   ptt: false // Optional
+   mime: 'image/jpeg', // Optional, auto-detected if not provided
+   document: false, // Force send as document (not image/video)
+   ptv: false, // Force send as PTV (Preview Temporary View)
+   gif: false, // Send as GIF
+   ptt: false // Push-to-talk mode
 })
 ```
 
-#### ⚪ PTV
+### ⚪ PTV
 
 ```javascript
 sock.sendPtv(jid, bufferOrUrl, m)
 ```
 
-#### 📃 Sticker
+### 📃 Sticker
 
 ```javascript
 sock.sendSticker(jid, bufferOrUrl, m, {
    packName: 'star-ghost',
    packPublisher: 'by Lia Wynn 🌱',
-   isAiSticker: true, // Optional
-   isAvatar: false, // Optional
-   premium: 1 // Optional
+   isAiSticker: true, // Enable AI sticker generation
+   isAvatar: false, // Treat as avatar sticker
+   premium: 1 // Premium sticker tier
 })
 ```
 
-#### 📦 Sticker Pack
+### 📦 Sticker Pack
 
 ZIP compression is built into `sendStickerPack()`, no extra dependencies required ✨
 
 ```javascript
 sock.sendStickerPack(jid, [bufferOrUrl, bufferOrUrl], m, {
-   cover: bufferOrUrl,
+   cover: bufferOrUrl, // Cover image for the pack
    caption: '🔔 There you go!',
    name: '📦 Sticker Pack',
    publisher: 'GitHub: ghostdev654',
@@ -504,7 +585,7 @@ sock.sendStickerPack(jid, [bufferOrUrl, bufferOrUrl], m, {
 })
 ```
 
-#### 👤 Contact
+### 👤 Contact
 
 ```javascript
 sock.sendContact(jid, [{
@@ -526,34 +607,36 @@ sock.sendContact(jid, [{
 }], m)
 ```
 
-#### 🖼️ Album
+### 🖼️ Album
+
+Send multiple media in a single message (carousel/album):
 
 ```javascript
 sock.sendAlbum(jid, [{
    media: bufferOrUrl,
-   caption: 'Image'
+   caption: 'Image 1'
 }, {
    media: bufferOrUrl,
-   caption: 'Video'
+   caption: 'Video 1'
 }], m)
 ```
 
-#### 📊 Poll
+### 📊 Poll
 
 ```javascript
-// --- Regular poll message
+// Regular poll message
 sock.sendPoll(jid, [
    '✨ Yes', '💀 No'
 ], m, {
    name: '🔥 Is it good?',
-   selectableCount: 1,
-   toAnnouncementGroup: false,
-   endDate: Date.now() + 28_800_000, // Optional
-   hideVoter: false, // Optional
-   canAddOption: false // Optional
+   selectableCount: 1, // How many options can be selected
+   toAnnouncementGroup: false, // Send to announcement group only
+   endDate: Date.now() + 28_800_000, // Optional: auto-close in 8 hours
+   hideVoter: false, // Hide who voted
+   canAddOption: false // Allow adding new options
 })
 
-// --- Quiz (only for newsletter)
+// Quiz (only for newsletter)
 sock.sendQuiz('1211111111111@newsletter', [
    '✨ Yes', '💀 No'
 ], m, {
@@ -562,10 +645,10 @@ sock.sendQuiz('1211111111111@newsletter', [
 })
 ```
 
-#### 📈 Poll Result
+### 📈 Poll Result
 
 ```javascript
-// --- Regular poll result message
+// Regular poll result
 sock.sendPollResult(jid, '📈 Poll Result', [{
    name: '🔥 Fire',
    voteCount: 133
@@ -574,7 +657,7 @@ sock.sendPollResult(jid, '📈 Poll Result', [{
    voteCount: 18
 }], m)
 
-// --- Quiz result message
+// Quiz result message
 sock.sendQuizResult(jid, '🏆 Quiz Result', [{
    name: '🔥 Fire',
    voteCount: 133
@@ -584,54 +667,12 @@ sock.sendQuizResult(jid, '🏆 Quiz Result', [{
 }], m)
 ```
 
-#### 🗄️ Interactive
+### 🗄️ Interactive (A2UI components)
 
 > [!NOTE]
-> Please read the A2UI [v0.9 component documentation](https://a2ui.org/reference/components/) before using the `components[]` field.
+> Please read the [A2UI v0.9 component documentation](https://a2ui.org/reference/components/) before using the `components[]` field.
 
 ```javascript
-const components = [{
-   id: 'root',
-   component: 'Column',
-   children: [
-      'portfolio_header',
-      'profile_card'
-   ]
-}, {
-   id: 'portfolio_header',
-   component: 'Text',
-   text: 'Giant Panda Portfolio',
-   variant: 'h1'
-}, {
-   id: 'profile_card',
-   component: 'Card',
-   child: 'profile_content'
-}, {
-   id: 'profile_content',
-   component: 'Column',
-   children: [
-      'profile_image',
-      'profile_bio',
-      'profile_meta'
-   ]
-}, {
-   id: 'profile_image',
-   component: 'Image',
-   url: 'https://files.catbox.moe/ms64an.jpeg',
-   variant: 'header',
-   fit: 'cover'
-}, {
-   id: 'profile_bio',
-   component: 'Text',
-   text: 'Professional bamboo expert, advanced napping practitioner, and forest cuteness ambassador.',
-    variant: 'body'
-}, {
-   id: 'profile_meta',
-   component: 'Text',
-   text: 'Status: Active • Location: Bamboo Forest',
-   variant: 'caption'
-}]
-
 sock.sendInteractive(jid, [{
    text: '👋🏻 Greeting',
    id: '#Greeting',
@@ -669,29 +710,29 @@ sock.sendInteractive(jid, [{
    }],
    icon: 'default' // Optional
 }], m, {
-   components: components, // Optional widget
+   components: components, // Widget components (optional)
    media: bufferOrUrl,
    caption: '🗄️ Interactive Message',
    footer: 'star-ghost',
    audioFooter: '/path/to/audio.mp3', // Optional
    ptt: false, // Optional, applied when "audioFooter" is set
-   optionText: '👉🏻 Select Options', // Optional, wrap all native flow into a single list
+   optionText: '👉🏻 Select Options', // Optional
    optionTitle: '📄 Select Options', // Optional
-   offerText: '🏷️ Newest Coupon!', // Optional, add an offer into message
+   offerText: '🏷️ Newest Coupon!', // Optional
    offerCode: 'star-ghost', // Optional
    offerUrl: 'https://www.npmjs.com/package/star-ghost', // Optional
-   offerExpiration: Date.now() + 3_600_000, // Optional
-   asTemplate: false // Optional, wrap the interactive message as template
+   offerExpiration: Date.now() + 3_600_000, // Optional (1 hour)
+   asTemplate: false // Optional, wrap as template
 })
 ```
 
-#### 🎠 Carousel
+### 🎠 Carousel
 
 ```javascript
 sock.sendCarousel(jid, [{
    media: bufferOrUrl,
    caption: '🖼️ Image 1',
-   footer: '🏷️️ Pinterest',
+   footer: '🏷️ Pinterest',
    nativeFlow: [{
       text: '🌐 Source',
       url: 'https://www.npmjs.com/package/star-ghost',
@@ -723,7 +764,7 @@ sock.sendCarousel(jid, [{
       text: '🛒 Product',
       id: '#Product',
       icon: 'default'
-   }, {
+}, {
       text: '🌐 Source',
       url: 'https://www.npmjs.com/package/star-ghost'
    }]
@@ -733,20 +774,20 @@ sock.sendCarousel(jid, [{
 })
 ```
 
-#### 🔘 Legacy Button
+### 🔘 Legacy Button
 
 ```javascript
-// --- Regular buttons message
+// Regular buttons message
 sock.sendLegacyButton(jid, [{
    text: '👋🏻 SignUp',
    id: '#SignUp'
 }], m, {
    text: '👆🏻 Buttons!',
    footer: 'star-ghost',
-   viewOnce: false // Optional, change to "true" if want proper render on WhatsApp Web
+   viewOnce: false // Optional, "true" for WhatsApp Web proper render
 })
 
-// --- Buttons with Media & List
+// Buttons with Media & List
 sock.sendLegacyButton(jid, [{
    text: '👋🏻 Rating',
    id: '#Rating'
@@ -772,18 +813,17 @@ sock.sendLegacyButton(jid, [{
    }]
 }], m, {
    media: bufferOrUrl,
-   caption: '👆🏻 Buttons and List!',
-   footer: 'star-ghost'
+   caption: '👆🏻 Buttons and List!'
 })
 ```
 
-#### 📋 Legacy List
+### 📋 Legacy List
 
 > [!NOTE]
-> This message is only works in private chat (`@s.whatsapp.net`)
+> This message type only works in private chat (`@s.whatsapp.net`).
 
 ```javascript
-// --- Regular legacy list message
+// Regular legacy list message
 sock.sendLegacyList(jid, [{
    title: '🚀 Menu 1',
    rows: [{
@@ -805,7 +845,7 @@ sock.sendLegacyList(jid, [{
    title: '👋🏻 Hello'
 })
 
-// --- Product list message
+// Product list message
 sock.sendLegacyList(jid, [{
    title: '📄 Section #1',
    products: [{
@@ -830,11 +870,14 @@ sock.sendLegacyList(jid, [{
 })
 ```
 
-#### ✨ Rich
+### ✨ Rich
+
+> [!TIP]
+> The `sendRich()` function supports a wide variety of widget types for creating rich responses similar to Meta AI or Google Gemini.
 
 ```javascript
 sock.sendRich(jid, [{
-   text: '# ✨ star-ghost\n\n---\n',
+   text: '# ✨ star-ghost\n\n---'
 }, {
    language: 'javascript',
    code: `console.log("Hello World")`
@@ -860,7 +903,7 @@ sock.sendRich(jid, [{
    }],
    canScroll: false
 }, {
-   htmlPayload: `<h1>✨ star-ghost</h1><p>A Baileys wrapper designed to make WhatsApp bot development simpler, cleaner, and more flexible.</p>`,
+   htmlPayload: `<h1>✨ star-ghost</h1><p>A Baileys wrapper...</p>`,
    trustedSources: ['https://github.com/ghostdev654/Star-Ghost']
 }, {
    video: 'https://path-to-video.com/',
@@ -909,42 +952,6 @@ sock.sendRich(jid, [{
       isCarousel: false
    }]
 }, {
-   title: 'Starseed Premium Script',
-   brand: 'Starseed',
-   price: 'Rp 150.000',
-   salePrice: 'Rp 75.000',
-   productUrl: 'https://path-to-web.com/',
-   imageUrl: 'https://path-to-image.com/',
-   additionalImages: [{
-      url: 'https://path-to-tiny-image.com/'
-   }] // Optional
-}, {
-   products: [{
-      title: 'Starseed Premium Script',
-      brand: 'Starseed',
-      price: 'Rp 150.000',
-      salePrice: 'Rp 75.000',
-      productUrl: 'https://path-to-web.com/',
-      imageUrl: 'https://path-to-image.com/'
-   }, {
-      title: 'Self-Bot Script',
-      brand: 'Starseed',
-      price: 'Rp 50.000',
-      productUrl: 'https://path-to-web.com/',
-      imageUrl: 'https://path-to-image.com/',
-      additionalImages: [{
-         url: 'https://path-to-tiny-image.com/'
-      }]
-   }]
-}, {
-   latex: 'https://quicklatex.com/cache3/82/ql_0676ade0cd04eda37aeb3d0bcd427682_l3.png',
-   expression: 'x^2 + 2x + 1',
-   mime: 'image/png',
-   width: 603,
-   height: 111,
-   fontHeight: 83.5,
-   padding: 15
-}, {
    text: '- Citation:',
    entities: [{
       title: 'Example of Citation',
@@ -983,7 +990,7 @@ sock.sendRich(jid, [{
    actionUrls: [{
       text: '💰 Donate Me!',
       url: 'https://github.com/ghostdev654'
-   }, {
+}, {
       text: '🌐 Google',
       url: 'https://www.google.com/'
    }]
@@ -992,7 +999,7 @@ sock.sendRich(jid, [{
       displayName: 'Simple Baileys Wrapper',
       sourceUrl: 'https://path-to-web.com/',
       faviconUrl: 'https://path-to-tiny-image.com/',
-      mime: 'image/jpeg' // Optional, the mime type of favicon
+      mime: 'image/jpeg' // Optional
    }]
 }], m, {
    notify: false, // Optional
@@ -1001,22 +1008,22 @@ sock.sendRich(jid, [{
 })
 ```
 
-#### 🛍️ Order
+### 🛍️ Order
 
 ```javascript
 sock.sendOrderMessage(jid, bufferOrUrl, '🛍️ Order Message!', m)
 ```
 
-#### 🗒️ Copy & Forward
+### 🗒️ Copy & Forward
 
 ```javascript
 sock.sendCopyMessage(jid, m, {
-   forwardingScore: 1, // Optional
-   quoted: m // Optional
+   forwardingScore: 1, // Optional: affect message forwarding score
+   quoted: m // Optional: quote the original message
 })
 ```
 
-#### 🎞️ Status Mention
+### 🎞️ Status Mention
 
 > [!NOTE]
 > Can be treated as `sendMessage()`.
@@ -1036,7 +1043,7 @@ sock.sendStatus([jid], {
 })
 ```
 
-#### 👥 Group Status
+### 👥 Group Status
 
 > [!NOTE]
 > Can be treated as `sendMessage()`.
@@ -1055,9 +1062,11 @@ sock.sendGroupStatus(jid, {
 })
 ```
 
-### ♻️ Modify Messages
+---
 
-#### 🗑️ Delete Messages
+## ♻️ Modify Messages
+
+### 🗑️ Delete Messages
 
 ```javascript
 sock.sendMessage(jid, {
@@ -1065,7 +1074,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### ✏️ Edit Messages
+### ✏️ Edit Messages
+
+Edits are sent the same way WhatsApp Web sends them: encrypted as a `secretEncryptedMessage` (`MESSAGE_EDIT`) using the original message's `messageStar`. Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`.
 
 ```javascript
 // --- Edit plain text
@@ -1082,29 +1093,31 @@ sock.sendMessage(jid, {
 ```
 
 > The key must reference a message sent by this session (WhatsApp's 20 minute edit window applies). `remoteJid`, `fromMe` and, in groups, `participant` are taken from `m.key`; if the key only contains `id`, `fromMe: true` and the current chat JID are filled in automatically.
->
-> Edits are sent the same way WhatsApp Web sends them: encrypted as a `secretEncryptedMessage` (`MESSAGE_EDIT`) using the `messageSecret` of the original message. Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`. If the original message is no longer available (for example after a restart and it was not persisted), pass the full message instead of only its key so the secret travels with it:
->
-> ```javascript
-> sock.sendMessage(jid, {
->    text: '✨ I mean, nice!',
->    edit: m
-> })
-> ```
->
-> When the secret cannot be resolved, the edit falls back to the plain `protocolMessage` format for compatibility.
 
-### 🎯 Private Messaging
+> **Important**: Edits are sent encrypted as `secretEncryptedMessage` (`MESSAGE_EDIT`). Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`. If the original message is no longer available (for example after a restart and it was not persisted), pass the full message instead of only its key so the secret travels with it:
+
+```javascript
+sock.sendMessage(jid, {
+   text: '✨ I mean, nice!',
+   edit: m  // Pass full message object, not just key
+})
+```
+
+When the secret cannot be resolved, the edit falls back to the plain `protocolMessage` format for compatibility.
+
+---
+
+## 🎯 Private Messaging
 
 > [!CAUTION]
 > **Experimental Features**: `recipientOverrides` and `specificRecipient` are still experimental and **strongly discouraged for continuous or frequent use**. These features may cause session instability or potentially break/corrupt the Baileys session, especially when used excessively.
->
+
 > Please use these features only when necessary and **at your own risk**. If these features are found to cause widespread or significant issues, they may be removed or withdrawn in a future release.
 
 > [!NOTE]
 > This is not limited to the `sendMessage()` function. It is also available to all message-sending functions previously mentioned in [📨 Sending Messages](#-sending-messages).
 
-#### 🎭 Overriding Message
+### 🎭 Overriding Message
 
 The message will be displayed differently to a specific user (`jid`) based on the `message` provided in the override.
 
@@ -1119,7 +1132,7 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 🔒 Private Message
+### 🔒 Private Message
 
 The message will only be displayed to specific users specified in `specificRecipient[]`.
 
@@ -1131,23 +1144,31 @@ sock.sendMessage(jid, {
 })
 ```
 
-### ⚙️ Baileys Features
+---
 
-#### 🔑 Request Custom Pairing Code
+## ⚙️ Baileys Features
+
+### 🔑 Request Custom Pairing Code
 
 > [!NOTE]
 > The phone number must contain numbers only (no +, (), or -) and must include the country code.
 
 ```javascript
 const phoneNumber = '6281111111111'
-const customPairingCode = 'STARHOST'
+const customPairingCode = 'STARHOST' // 8-digit alphanumeric (optional, defaults to GHOSTDEV)
 
 await sock.requestPairingCode(phoneNumber, customPairingCode)
 
 console.log('🔗 Pairing code', ':', customPairingCode)
 ```
 
-#### 📣 Newsletter Management
+The `customPairingCode` option:
+- Defaults to `GHOSTDEV` if not provided
+- Must be exactly 8 characters: `^[A-Za-z0-9]{8}$`
+- Letters (A-Z, a-z) and numbers (0-9) only - **no symbols allowed**
+- Used when requesting the pairing code from WhatsApp servers
+
+### 📣 Newsletter Management
 
 ```javascript
 // --- Create a new one
@@ -1210,7 +1231,7 @@ console.dir(messages, { depth: null })
 sock.newsletterDelete('1211111111111@newsletter')
 ```
 
-#### 👥 Group Management
+### 👥 Group Management
 
 ```javascript
 // --- Create a new one and add participants using their JIDs
@@ -1282,7 +1303,7 @@ sock.groupMemberAddMode(jid, 'admin_add')
 sock.groupMemberAddMode(jid, 'all_member_add')
 
 // --- Enable or disable temporary messages with seconds format
-sock.groupToggleEphemeral(jid, 86400)
+sock.groupToggleEphemeral(jid, 86400) // 24 hours
 
 // --- Disable temporary messages
 sock.groupToggleEphemeral(jid, 0)
@@ -1301,13 +1322,13 @@ console.dir(requests, { depth: null })
 
 // --- Get group info from link
 const group = await sock.groupGetInviteInfo('ABC123456789')
-console.log('👥 Got group info from invite code', ':', group)
+console.log('👥 Got group info from invite code:', group)
 
 // --- Update bot member label
 sock.updateMemberLabel(jid, 'star-ghost')
 ```
 
-#### 👥 Community Management
+### 👥 Community Management
 
 ```javascript
 // --- Create a new one and add description
@@ -1391,10 +1412,10 @@ console.dir(requests, { depth: null })
 
 // --- Get community info from link
 const community = await sock.communityGetInviteInfo('ABC123456789')
-console.log('👥 Got community info from invite code', ':', community)
+console.log('👥 Got community info from invite code:', community)
 ```
 
-#### 👤 Profile Management
+### 👤 Profile Management
 
 ```javascript
 // --- Get user profile picture
@@ -1453,8 +1474,8 @@ sock.addMessageLabel(jid, messageId, labelId)
 
 // --- Favorites
 sock.keepFavorites([
-  '6281111111111@s.whatsapp.net',
-  '1211111111111@g.us'
+   '6281111111111@s.whatsapp.net',
+   '1211111111111@g.us'
 ])
 sock.keepFavorites([
    '6281111111111@s.whatsapp.net' // Only this one remains
@@ -1468,7 +1489,7 @@ const profile = await sock.getBusinessProfile(jid)
 console.dir(profile, { depth: null })
 ```
 
-#### 🛒 Business Management
+### 🛒 Business Management
 
 ```javascript
 // --- Create a new product
@@ -1505,8 +1526,8 @@ sock.productDelete([productId])
 
 // --- Get catalog info
 const { products, nextPageCursor } = await sock.getCatalog({
-  jid: '6281111111111@s.whatsapp.net',
-  limit: 10
+   jid: '6281111111111@s.whatsapp.net',
+   limit: 10
 })
 
 // --- Get collections
@@ -1539,15 +1560,15 @@ sock.removeCoverPhoto(coverId)
 
 // --- Update quick replies
 sock.addOrEditQuickReply({
-  shortcut: 'hello',
-  message: 'Hello from business account',
+   shortcut: 'hello',
+   message: 'Hello from business account'
 })
 
 // --- Remove quick reply
 sock.removeQuickReply(timestamp)
 ```
 
-#### 🔐 Privacy Management
+### 🔐 Privacy Management
 
 ```javascript
 // --- Update last seen privacy
@@ -1583,74 +1604,85 @@ sock.updateMessagesPrivacy('nobody')
 sock.updateCallPrivacy('everyone')
 
 // --- Update default disappearing mode
-sock.updateDefaultDisappearingMode(86400)
+sock.updateDefaultDisappearingMode(86400) // 24 hours in seconds
 
 // --- Update link previews privacy
 sock.updateDisableLinkPreviewsPrivacy(true)
 ```
 
-#### 📡 Baileys Events Reference
+---
 
-```javascript
-sock.ev.on('connection.update', console.log)
-sock.ev.on('creds.update', console.log)
-sock.ev.on('messaging-history.set', console.log)
-sock.ev.on('messaging-history.status', console.log)
-sock.ev.on('chats.upsert', console.log)
-sock.ev.on('chats.update', console.log)
-sock.ev.on('chats.delete', console.log)
-sock.ev.on('chats.lock', console.log)
-sock.ev.on('lid-mapping.update', console.log)
-sock.ev.on('presence.update', console.log)
-sock.ev.on('contacts.upsert', console.log)
-sock.ev.on('contacts.update', console.log)
-sock.ev.on('messages.delete', console.log)
-sock.ev.on('messages.update', console.log)
-sock.ev.on('messages.media-update', console.log)
-sock.ev.on('messages.upsert', console.log)
-sock.ev.on('messages.reaction', console.log)
-sock.ev.on('message-receipt.update', console.log)
-sock.ev.on('groups.upsert', console.log)
-sock.ev.on('groups.update', console.log)
-sock.ev.on('group-participants.update', console.log)
-sock.ev.on('group.join-request', console.log)
-sock.ev.on('group.member-tag.update', console.log)
-sock.ev.on('blocklist.set', console.log)
-sock.ev.on('blocklist.update', console.log)
-sock.ev.on('call', console.log)
-sock.ev.on('labels.edit', console.log)
-sock.ev.on('labels.association', console.log)
-sock.ev.on('newsletter.reaction', console.log)
-sock.ev.on('newsletter.view', console.log)
-sock.ev.on('newsletter-participants.update', console.log)
-sock.ev.on('newsletter-settings.update', console.log)
-sock.ev.on('settings.update', console.log)
-```
+## 📡 Baileys Events Reference
 
-### 🗳️ Database
+Full list of available Baileys events that can be listened to via `sock.ev.on(event, callback)`:
 
-Including two built-in database backends to fit different use cases:
+| Event | Typical Payload |
+|-------|----------------|
+| `connection.update` | `{ type: 'connect' \| ' disconnect' \| 'close' \| 'qr' \| 'authenticated', qr?: string, code?: number, ... }` |
+| `creds.update` | Credentials update data |
+| `messaging-history.set` | `{ chats: [...] }` |
+| `messaging-history.status` | Status of history sync |
+| `chats.upsert` | Chat object that was added/updated |
+| `chats.update` | Chat that was updated |
+| `chats.delete` | Chat JID that was deleted |
+| `chats.lock` | Locked chat data |
+| `lid-mapping.update` | LID mapping update |
+| `presence.update` | Presence update |
+| `contacts.upsert` | Contact added/updated |
+| `contacts.update` | Contact modified |
+| `messages.delete` | Message keys that were deleted |
+| `messages.update` | Message keys that were updated |
+| `messages.media-update` | Media message updated |
+| `messages.upsert` | Message inserted/updated in store |
+| `messages.reaction` | Reaction event on message |
+| `message-receipt.update` | Read receipt update |
+| `groups.upsert` | Group added/updated |
+| `groups.update` | Group subject/description/photo updated |
+| `group-participants.update` | Participants added/removed/promoted/demoted |
+| `group.join-request` | Group join request data |
+| `group.member-tag.update` | Member tag updated |
+| `blocklist.set` | Full blocklist |
+| `blocklist.update` | Blocklist update |
+| `call` | Call event data |
+| `labels.edit` | Label edited data |
+| `labels.association` | Label association changed |
+| `newsletter.reaction` | Newsletter reaction event |
+| `newsletter.view` | Newsletter view event |
+| `newsletter-participants.update` | Newsletter participants changed |
+| `newsletter-settings.update` | Newsletter settings changed |
+| `settings.update` | Global settings updated |
 
-- **JSON**: A simple solution for small projects and straightforward data storage.
-- **SQLite**: Powered by `better-sqlite3`, delivering high performance, low overhead, and a hassle-free experience.
+---
 
-#### 📎 JSON
+## 🗳️ Database
+
+Star-Ghost includes two built-in database backends:
+
+### 📎 JSON (Default, simple)
 
 ```javascript
 import { Database } from 'star-ghost'
 
 const db = await Database.json('database.json')
 
+// Read all data
 const data = await db.read()
 
+// Write data
 await db.write({
    users: {},
    groups: {},
    settings: {}
 })
+
+// Alternative: read/write in one step
+const result = await db.readWrite({
+   users: { '123': { name: 'Test' } },
+   groups: {}
+})
 ```
 
-#### 📎 SQLite
+### 📎 SQLite (High performance)
 
 > [!IMPORTANT]
 > [`better-sqlite3@>=13.0.0`](https://www.npmjs.com/package/better-sqlite3) is a peer dependency. You must install it manually and add it to your project's `package.json`.
@@ -1660,18 +1692,32 @@ import { Database } from 'star-ghost'
 
 const db = await Database.sqlite('database.db')
 
+// Read all data
 const data = db.read()
 
+// Write data
 db.write({
    users: {},
    groups: {},
    settings: {}
 })
 
+// Close the database connection when done
 db.close()
 ```
 
-### 🧩 Extend
+### Database methods (both backends):
+
+| Method | Description |
+|--------|-------------|
+| `db.read()` | Read all stored data |
+| `db.write(obj)` | Write data object |
+| `db.close()` | Close SQLite connection (JSON has no close) |
+| `db.clear()` | Clear all data |
+
+---
+
+## 🧩 Extend
 
 If you prefer not to use the `Client` wrapper but still want the additional features provided by this package, you can use `Extend`.
 
@@ -1698,12 +1744,23 @@ const sock = await Extend(waSocket, {
    } // IForwardedNewsletterMessageInfo | false
 })
 
-// sock.sendText(jid, 'Hello there', message)
+// Now you can use all Client methods on waSocket
+sock.sendText('123@s.whatsapp.net', 'Hello!')
+sock.sendMedia('123@s.whatsapp.net', buffer, 'Hello!')
 ```
 
-Besides extending your socket with additional helper methods, `Extend` also provides built-in decryption for `secretEncryptedMessage` to obtain `editedMessage` and automatically decrypts the `vote` payload contained in `pollUpdateMessage`.
+### Extend options:
 
-### 🌐 Request
+| Option | Default | Description |
+|--------|---------|-------------|
+| `messageIdPrefix` | `'STAR-GHOST'` | Prefix for message IDs |
+| `updatePresence` | `true` | Whether to update presence status |
+| `updateProtoOnStartup` | `true` | Whether to update proto on startup |
+| `newsletterAnnotation` | `false` | Newsletter annotation config |
+
+---
+
+## 🌐 Request
 
 > [!NOTE]
 > This feature relies on Node.js's built-in `fetch()` API along with several other native Node.js capabilities. Therefore, it's highly recommended to use Node.js version 20 or newer (>= 20) to ensure everything works properly.
@@ -1713,25 +1770,29 @@ import { Request } from 'star-ghost'
 
 // --- Quick request
 const result = await Request.request('https://path-to-web-api.com/', {
-   timeout: 3000 // Default: 1.5 minutes
+   timeout: 3000 // Default: 60000 (60 seconds)
 })
 
-// --- Get url from redirect url
+// --- Get URL from redirect chain
 const maxRedirects = 3 // Default: 3
 const realUrl = await Request.resolveUrl('https://path-to-redirect.com/', maxRedirects)
 
-// --- Create a fast path
+// --- Create a fast API path
 const someApi = Request.createApiRequest('https://path-to-web-api.com/')
 
+// GET request
 const getResult = await someApi('path/to/get', {
    q: 'Hello'
 }, {
-   // Optional
+   // Optional parameters
    timeout: 3000,
    method: 'GET',
-   headers: {}
+   headers: {
+      'Content-Type': 'application/json'
+   }
 })
 
+// POST request
 const postResult = await someApi('path/to/post', {
    method: 'POST',
    headers: {
@@ -1743,41 +1804,98 @@ const postResult = await someApi('path/to/post', {
 })
 ```
 
-### 🔧 Global Config
+### Request utility functions:
+
+| Function | Description |
+|----------|-------------|
+| `Request.request(url, options)` | Make a generic HTTP request |
+| `Request.resolveUrl(url, maxRedirects)` | Resolve redirects and return final URL |
+| `Request.createApiRequest(baseUrl)` | Create a reusable API request function |
+
+### Default options for `Request.request()`:
+
+```javascript
+{
+   timeout: getGlobalConfig('requestTimeout') || 60000, // 60 seconds
+   signal: undefined, // Abort signal
+   headers: {} // Custom headers
+}
+```
+
+---
+
+## 🔧 Global Config
+
+Manage global configuration settings that affect the entire bot's behavior.
 
 ```javascript
 import { Utilities, getGlobalConfig, setGlobalConfig } from 'star-ghost'
 
+// Get current configuration
 const myConfig = getGlobalConfig()
 
+// Set new configuration
 setGlobalConfig({
    // FFmpeg executable binary path
    ffmpegPath: 'ffmpeg',
 
-   // FFmpeg concurrent
+   // FFmpeg concurrent execution
    ffmpegConcurrency: 4,
 
-   // FFmpeg execution timeout (ms)
-   ffmpegTimeout: 90_000,
+   // FFmpeg execution timeout in milliseconds
+   ffmpegTimeout: 90_000, // 90 seconds
 
    // Shared cache instance
    cache: Utilities.createCache(),
 
-   // Logger instance (e.g. pino())
+   // Logger instance (e.g. pino, winston)
    logger: LOGGER,
 
-   // Default request timeout (ms)
-   requestTimeout: 60_000,
+   // Default request timeout in milliseconds
+   requestTimeout: 60_000, // 60 seconds
 
-   // Temporary directory
+   // Temporary directory path
    temporaryPath: 'temp',
 
-   // Time zone
+   // Time zone for date operations
    timezone: 'Asia/Jakarta'
 })
 ```
 
-### 📚 Exported Modules
+### Global config defaults:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `ffmpegPath` | `ffmpeg` | Path to ffmpeg binary |
+| `ffmpegConcurrency` | `4` | Concurrent ffmpeg processes |
+| `ffmpegTimeout` | `90000` | FFmpeg timeout in ms |
+| `cache` | `Utilities.createCache()` | Cache instance |
+| `logger` | `pino` or custom | Logger instance |
+| `requestTimeout` | `60000` | Default request timeout in ms |
+| `temporaryPath` | `temp` | Temp directory |
+| `timezone` | `Asia/Jakarta` | Default time zone |
+
+### Cache utilities:
+
+```javascript
+import { Utilities } from 'star-ghost'
+
+const cache = Utilities.createCache({
+   ttl: 300_000, // 5 minutes default
+   max: 1024 // Max entries
+})
+
+// Cache methods
+cache.set('key', 'value')
+cache.get('key')
+cache.has('key')
+cache.delete('key')
+cache.clear()
+```
+
+---
+
+## 📚 Exported Modules
 
 ```javascript
 import {
@@ -1794,14 +1912,30 @@ import {
 } from 'star-ghost'
 ```
 
-### 🚀 Try the Bot
+### Module descriptions:
 
-A fast, and modular WhatsApp bot built with [@itsliaaa/baileys](https://www.npmjs.com/package/@itsliaaa/baileys).
-Perfect for managing groups, moderating chats, and adding fun with quiz games and handy tools.
+| Module | Description |
+|--------|-------------|
+| `Client` | Main bot client wrapper |
+| `Database` | JSON/SQLite database manager |
+| `Extend` | Extend Baileys socket with extra methods |
+| `Request` | HTTP request utilities |
+| `Scraper` | Web scraping utilities |
+| `Serialize` | Message serialization helpers |
+| `Utilities` | General utility functions |
+| `Watcher` | File watching utilities |
+| `getGlobalConfig` | Get global configuration |
+| `setGlobalConfig` | Set global configuration |
 
-👉🏻 [@itsliaaa/starseed](https://github.com/itsliaaa/starseed#readme)
+---
 
-### 📣 Credits
+## 🚀 Try the Bot
+
+A fast, and modular WhatsApp bot built with [@itsliaaa/baileys](https://www.npmjs.com/package/@itsliaaa/baileys). Perfect for managing groups, moderating chats, and adding fun with quiz games and handy tools.
+
+---
+
+## 📣 Credits
 
 This project uses Protocol Buffer definitions maintained by [WPP Connect](https://github.com/wppconnect-team) via [`wa-proto`](https://github.com/wppconnect-team/wa-proto) for the `updateProtoOnStartup` feature.
 
@@ -1816,4 +1950,16 @@ Special thanks to the original Baileys maintainers and contributors:
 
 **Star-Ghost fork maintained by [GhostDev.js](https://github.com/ghostdev654).**
 
-Please do not remove or alter the original credits, copyright notices, or attributions.
+---
+
+## 📁 Media Folder
+
+A `media/` folder has been created at the root of the project for uploading the logo and other media assets.
+
+- Place your logo image as `media/star-ghost-logo.png`
+- The logo is referenced in the README header: `media/star-ghost-logo.png`
+- Supported formats: PNG, JPG, SVG, WebP
+
+---
+
+*Generated with Star-Ghost v0.0.0-alpha.34*
