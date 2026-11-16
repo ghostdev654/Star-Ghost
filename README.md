@@ -357,17 +357,23 @@ client.ev.on('error', (err) => {
 | `presence` | Presence update |
 | `contacts.upsert` | Contact added/updated |
 | `contacts.update` | Contact modified |
-| `messages.delete` | Messages deleted |
+| `messages.delete` | Message keys that were deleted |
 | `messages.update` | Messages updated |
 | `messages.media-update` | Media message updated |
 | `messages.upsert` | Message inserted/updated in store |
 | `messages.reaction` | Reaction added to message |
-| `blocklist.set` | Blocklist set |
-| `blocklist.update` | Blocklist updated |
-| `labels.edit` | Label edited |
+| `message-receipt.update` | Read receipt update |
+| `groups.upsert` | Group added/updated |
+| `groups.update` | Group subject/description/photo updated |
+| `group-participants.update` | Participants added/removed/promoted/demoted |
+| `group.join-request` | Group join request data |
+| `group-member-tag.update` | Member tag updated |
+| `blocklist.set` | Full blocklist |
+| `blocklist.update` | Blocklist update |
+| `labels.edit` | Label edited data |
 | `labels.association` | Label association changed |
-| `newsletter.reaction` | Newsletter message reacted to |
-| `newsletter.view` | Newsletter viewed |
+| `newsletter.reaction` | Newsletter reaction event |
+| `newsletter.view` | Newsletter view event |
 | `newsletter-participants.update` | Newsletter participants changed |
 | `newsletter-settings.update` | Newsletter settings changed |
 | `settings.update` | Global settings updated |
@@ -777,7 +783,7 @@ sock.sendCarousel(jid, [{
 ### 🔘 Legacy Button
 
 ```javascript
-// Regular buttons message
+// --- Regular buttons message
 sock.sendLegacyButton(jid, [{
    text: '👋🏻 SignUp',
    id: '#SignUp'
@@ -787,7 +793,7 @@ sock.sendLegacyButton(jid, [{
    viewOnce: false // Optional, "true" for WhatsApp Web proper render
 })
 
-// Buttons with Media & List
+// --- Buttons with Media & List
 sock.sendLegacyButton(jid, [{
    text: '👋🏻 Rating',
    id: '#Rating'
@@ -823,7 +829,7 @@ sock.sendLegacyButton(jid, [{
 > This message type only works in private chat (`@s.whatsapp.net`).
 
 ```javascript
-// Regular legacy list message
+// --- Regular legacy list message
 sock.sendLegacyList(jid, [{
    title: '🚀 Menu 1',
    rows: [{
@@ -845,7 +851,7 @@ sock.sendLegacyList(jid, [{
    title: '👋🏻 Hello'
 })
 
-// Product list message
+// --- Product list message
 sock.sendLegacyList(jid, [{
    title: '📄 Section #1',
    products: [{
@@ -877,7 +883,7 @@ sock.sendLegacyList(jid, [{
 
 ```javascript
 sock.sendRich(jid, [{
-   text: '# ✨ star-ghost\n\n---'
+   text: '# ✨ star-ghost\n\n---\n'
 }, {
    language: 'javascript',
    code: `console.log("Hello World")`
@@ -1076,7 +1082,7 @@ sock.sendMessage(jid, {
 
 ### ✏️ Edit Messages
 
-Edits are sent the same way WhatsApp Web sends them: encrypted as a `secretEncryptedMessage` (`MESSAGE_EDIT`) using the original message's `messageStar`. Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`.
+Edits are sent the same way WhatsApp Web sends them: encrypted as a `secretEncryptedMessage` (`MESSAGE_EDIT`) using the original message's `messageSecret`. Star-Ghost keeps a small in-memory cache of the secrets of the messages it sends and also falls back to the persistent store/`getMessage`.
 
 ```javascript
 // --- Edit plain text
@@ -1640,7 +1646,7 @@ Full list of available Baileys events that can be listened to via `sock.ev.on(ev
 | `groups.update` | Group subject/description/photo updated |
 | `group-participants.update` | Participants added/removed/promoted/demoted |
 | `group.join-request` | Group join request data |
-| `group.member-tag.update` | Member tag updated |
+| `group-member-tag.update` | Member tag updated |
 | `blocklist.set` | Full blocklist |
 | `blocklist.update` | Blocklist update |
 | `call` | Call event data |
@@ -1854,10 +1860,10 @@ setGlobalConfig({
    // Default request timeout in milliseconds
    requestTimeout: 60_000, // 60 seconds
 
-   // Temporary directory path
+   // Temporary directory
    temporaryPath: 'temp',
 
-   // Time zone for date operations
+   // Time zone
    timezone: 'Asia/Jakarta'
 })
 ```
